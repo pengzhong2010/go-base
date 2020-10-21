@@ -143,3 +143,15 @@ func ReadFile(filePath string) (contentByte []byte, err error) {
 	contentByte, err = ioutil.ReadAll(f)
 	return
 }
+
+//map get keys
+func MapGetKeysInt64(m map[int64]int64) []int64 {
+	// 数组默认长度为map长度,后面append时,不需要重新申请内存和拷贝,效率较高
+	j := 0
+	keys := make([]int64, len(m))
+	for k := range m {
+		keys[j] = k
+		j++
+	}
+	return keys
+}

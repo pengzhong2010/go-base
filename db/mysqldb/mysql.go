@@ -26,7 +26,7 @@ func init() {
 	db_name = os.Getenv("MYSQL_NAME")
 	var err error
 	if env_type == "dev" {
-		Mysqldb, err = gorm.Open("mysql", "root:caidaoninb@tcp(localhost:33306)/cmdb1?charset=utf8&parseTime=True&loc=Local")
+		Mysqldb, err = gorm.Open("mysql", "root:caidaoninb@tcp(localhost:33306)/cmdb2?charset=utf8&parseTime=True&loc=Local")
 	} else {
 		Mysqldb, err = gorm.Open("mysql", db_user+":"+db_passwd+"@tcp("+db_host+":"+db_port+")/"+db_name+"?charset=utf8&parseTime=True&loc=Local")
 	}
