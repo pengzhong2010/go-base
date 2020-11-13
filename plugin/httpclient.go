@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 )
 
 // 基础方法，这里多用于访问webapi，配合上json转换。此方法可以运行但是不算完善。
