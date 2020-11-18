@@ -157,11 +157,23 @@ func ReadFile(filePath string) (contentByte []byte, err error) {
 	return
 }
 
-//map get keys
+//map get keys type int64
 func MapGetKeysInt64(m map[int64]int64) []int64 {
 	// 数组默认长度为map长度,后面append时,不需要重新申请内存和拷贝,效率较高
 	j := 0
 	keys := make([]int64, len(m))
+	for k := range m {
+		keys[j] = k
+		j++
+	}
+	return keys
+}
+
+//map get keys type string
+func MapGetKeysString(m map[string]interface{}) []string {
+	// 数组默认长度为map长度,后面append时,不需要重新申请内存和拷贝,效率较高
+	j := 0
+	keys := make([]string, len(m))
 	for k := range m {
 		keys[j] = k
 		j++
