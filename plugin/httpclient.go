@@ -65,6 +65,17 @@ func HttpDoGet(url string, msg string) (int, string, error) {
 	return res_code, res_str, nil
 }
 
+// delete方式
+func HttpDoDelete(url string, msg string) (int, string, error) {
+	res_code, res_str, err := httpDo("DELETE", url, msg)
+	if err != nil {
+		log.Println(err)
+		return 0, "", err
+	}
+
+	return res_code, res_str, nil
+}
+
 func HttpDo1(method string, url string, msg string) (int, string, error) {
 	// log.Println("----", url, "----")
 	client := &http.Client{}
