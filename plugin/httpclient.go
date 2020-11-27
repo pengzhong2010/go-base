@@ -54,6 +54,17 @@ func HttpDoPost(url string, msg string) (int, string, error) {
 	return res_code, res_str, nil
 }
 
+// put方式
+func HttpDoPut(url string, msg string) (int, string, error) {
+	res_code, res_str, err := httpDo("PUT", url, msg)
+	if err != nil {
+		log.Println(err)
+		return 0, "", err
+	}
+
+	return res_code, res_str, nil
+}
+
 // get方式
 func HttpDoGet(url string, msg string) (int, string, error) {
 	res_code, res_str, err := httpDo("GET", url, msg)
