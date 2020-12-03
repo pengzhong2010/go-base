@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"crypto/aes"
 	"crypto/cipher"
+	"encoding/base64"
 )
 
 func PKCS7Padding(ciphertext []byte, blockSize int) []byte {
@@ -44,4 +45,23 @@ func AesDecrypt(crypted, key []byte) ([]byte, error) {
 	blockMode.CryptBlocks(origData, crypted)
 	origData = PKCS7UnPadding(origData)
 	return origData, nil
+}
+
+//base64编码
+func Base64Encrypt(input []byte) (output string, err error) {
+	if len(input) == 0 {
+		return
+	}
+	output = base64.StdEncoding.EncodeToString(input)
+	return
+}
+
+//base64解码
+func Base64Decrypt(input string) (output []byte, err error) {
+	if len(input) == 0 {
+		return
+	}
+	output, err = base64.StdEncoding.DecodeString(input)
+
+	return
 }
