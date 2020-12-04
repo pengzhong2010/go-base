@@ -3,6 +3,7 @@ package plugin
 import (
 	"bytes"
 	"crypto/rand"
+	"encoding/binary"
 	"github.com/ChengjinWu/gojson"
 	qrcode "github.com/skip2/go-qrcode"
 	"io/ioutil"
@@ -93,6 +94,21 @@ func IntToStr(i int) string {
 func Int64ToStr(i int64) string {
 	s := strconv.FormatInt(i, 10)
 	return s
+}
+
+//Int64ToByte
+func Int64ToBytes(n int64) []byte {
+	bytebuf := bytes.NewBuffer([]byte{})
+	binary.Write(bytebuf, binary.BigEndian, n)
+	return bytebuf.Bytes()
+}
+
+//ByteToInt64
+func BytesToInt64(bys []byte) int64 {
+	bytebuff := bytes.NewBuffer(bys)
+	var data int64
+	binary.Read(bytebuff, binary.BigEndian, &data)
+	return data
 }
 
 func JsonCheck(data []byte) (err error) {
