@@ -5,6 +5,7 @@ import (
 	"crypto/rand"
 	"encoding/binary"
 	"github.com/ChengjinWu/gojson"
+	"github.com/go-basic/uuid"
 	qrcode "github.com/skip2/go-qrcode"
 	"io/ioutil"
 	"log"
@@ -203,4 +204,9 @@ func GetEnv(key, defVal string) string {
 		return val
 	}
 	return defVal
+}
+
+//uuid new
+func NewUuid() string {
+	return uuid.New()
 }
