@@ -196,3 +196,11 @@ func MapGetKeysString(m map[string]interface{}) []string {
 	}
 	return keys
 }
+
+//get env
+func GetEnv(key, defVal string) string {
+	if val, ok := os.LookupEnv(key); ok {
+		return val
+	}
+	return defVal
+}
