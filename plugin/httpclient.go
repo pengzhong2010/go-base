@@ -65,6 +65,17 @@ func HttpDoPut(url string, msg string) (int, string, error) {
 	return res_code, res_str, nil
 }
 
+// patch方式
+func HttpDoPatch(url string, msg string) (int, string, error) {
+	res_code, res_str, err := httpDo("PATCH", url, msg)
+	if err != nil {
+		log.Println(err)
+		return 0, "", err
+	}
+
+	return res_code, res_str, nil
+}
+
 // get方式
 func HttpDoGet(url string, msg string) (int, string, error) {
 	res_code, res_str, err := httpDo("GET", url, msg)
