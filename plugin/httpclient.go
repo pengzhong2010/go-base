@@ -6,12 +6,15 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"time"
 )
 
 // 基础方法，这里多用于访问webapi，配合上json转换。此方法可以运行但是不算完善。
 func httpDo(method string, url string, msg string) (int, string, error) {
 	// log.Println("----", url, "----")
-	client := &http.Client{}
+	client := &http.Client{
+		Timeout: 15 * time.Second,
+	}
 	body := bytes.NewBuffer([]byte(msg))
 	req, err := http.NewRequest(method,
 		url,
